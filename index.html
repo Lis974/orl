@@ -1,80 +1,62 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход на курс</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .checkbox-container input {
-            margin-right: 10px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Переход на курс</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 12px 24px;
+      background: #0088cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #006699;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Подтвердите, что вы не робот</h2>
+    <p>
+      <input type="checkbox" id="captchaCheck"> Я не робот
+    </p>
+    <button onclick="goToOffer()">Перейти к курсу</button>
+  </div>
 
-<div class="container">
-    <h1>Подтвердите, что вы не робот</h1>
-    <div class="checkbox-container">
-        <input type="checkbox" id="agree" name="agree">
-        <label for="agree">Я не робот</label>
-    </div>
-    <a href="https://orlovskyi.com/live_ref_v2/?utm_source=512929292{clickId}">
-        <button id="submitButton" disabled>ПОДТВЕРЖДАЮ</button>
-    </a>
-</div>
-
-<script>
-    const checkbox = document.getElementById('agree');
-    const button = document.getElementById('submitButton');
-    
-    checkbox.addEventListener('change', function () {
-        if (checkbox.checked) {
-            button.disabled = false;
-        } else {
-            button.disabled = true;
-        }
-    });
-</script>
-
+  <script>
+    function goToOffer() {
+      const checked = document.getElementById('captchaCheck').checked;
+      if (!checked) {
+        alert('Поставьте галочку!');
+        return;
+      }
+      const params = new URLSearchParams(window.location.search);
+      const clickid = params.get('clickid') || '';
+      const url = `https://orlovskyi.com/live_ref_v2/?utm_source=512929292&click_id=${clickid}`;
+      window.location.href = url;
+    }
+  </script>
 </body>
 </html>
