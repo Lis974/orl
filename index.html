@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta http-equiv="refresh" content="0; URL='https://telegram.me/orlovskiy_live_new_bot?start=0pSbK0I7MPVb0Fapx_02FMKdYNEtb1p2c1LPnJ4AS__01t3wMB9wU'" />
-    <title>Переход...</title>
-  </head>
-  <body>
-    <p>Переход в Telegram...</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm You Are Not A Robot</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .container h1 {
+            margin-bottom: 20px;
+        }
+        .g-recaptcha {
+            margin-bottom: 20px;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Confirm You Are Not A Robot</h1>
+    
+    <!-- Google reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+
+    <!-- Submit Button -->
+    <br>
+    <button class="submit-button" onclick="verifyCaptcha()">Submit</button>
+</div>
+
+<script>
+    function verifyCaptcha() {
+        var response = grecaptcha.getResponse();
+        if (response.length == 0) {
+            alert("Please verify that you are not a robot.");
+        } else {
+            window.location.href = "https://telegram.me/orlovskiy_live_new_bot?start=0pSbK0I7MPVb0Fapx_02FMKdYNEtb1p2c1LPnJ4AS__01t3wMB9wU";
+        }
+    }
+</script>
+
+</body>
 </html>
