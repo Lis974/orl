@@ -2,63 +2,75 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Подтвердите действие</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crypto Landing</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      text-align: center;
+      padding: 50px 20px;
     }
+
     .container {
-      background-color: white;
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
-    .checkbox {
+
+    h1 {
+      font-size: 2em;
       margin-bottom: 20px;
     }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
     }
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #00cc99;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <h2>Подтвердите, что вы не робот</h2>
-    <div class="checkbox">
-      <input type="checkbox" id="humanCheck" onchange="toggleButton()">
-      <label for="humanCheck">Я человек</label>
+    <h1>Хочешь зарабатывать на крипте?</h1>
+    <p>Пройди короткое обучение и получи доступ к платформе прямо сейчас!</p>
+    <a href="#" class="btn" onclick="sendEvent('conversion')">
+      Получить доступ
+    </a>
+    <div class="footer">
+      © 2025 CryptoLaunch
     </div>
-    <button id="submitBtn" onclick="sendEvent('conversion')" disabled>Продолжить</button>
   </div>
 
   <script>
-    function toggleButton() {
-      const checkbox = document.getElementById('humanCheck');
-      const button = document.getElementById('submitBtn');
-      button.disabled = !checkbox.checked;
-    }
-
     function getURLParameter(name) {
       return decodeURIComponent(
-        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1] || '',
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, null])[1] || ''
       );
     }
 
@@ -67,13 +79,11 @@
       img.src = `https://orl.drsale.com.ua/conversion.gif?cet=${event}&cid=${getURLParameter('cid')}`;
       img.style.display = 'none';
       document.body.appendChild(img);
-      console.log(`BeMob Event - ${event}`);
 
-      // Перенаправление на оффер
-      window.location.href = "https://orlovskyi.com/live_ref_v2/?utm_source=512929292";
-
-      return;
+      // редирект на оффер после отправки пикселя
+      window.location.href = "https://orl.drsale.com.ua/click";
     }
   </script>
+
 </body>
 </html>
