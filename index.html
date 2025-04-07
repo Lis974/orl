@@ -2,61 +2,70 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Переход на курс</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crypto Landing</title>
   <style>
     body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       font-family: Arial, sans-serif;
-      background-color: #f0f2f5;
-    }
-    .container {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
       text-align: center;
-      background: #fff;
+      padding: 50px 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
-    button {
-      padding: 12px 24px;
-      background: #0088cc;
-      color: white;
-      border: none;
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
       border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
+      transition: background-color 0.3s ease;
     }
-    button:hover {
-      background: #006699;
+
+    .btn:hover {
+      background-color: #00cc99;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <h2>Подтвердите, что вы не робот</h2>
-    <p>
-      <input type="checkbox" id="captchaCheck"> Я не робот
-    </p>
-    <button onclick="goToOffer()">Перейти к курсу</button>
+    <h1>Хочешь зарабатывать на крипте?</h1>
+    <p>Пройди короткое обучение и получи доступ к платформе прямо сейчас!</p>
+    <a href="https://orl.drsale.com.ua/click" class="btn">
+      Получить доступ
+    </a>
+    <div class="footer">
+      © 2025 CryptoLaunch
+    </div>
   </div>
 
-  <script>
-    function goToOffer() {
-      const checked = document.getElementById('captchaCheck').checked;
-      if (!checked) {
-        alert('Поставьте галочку!');
-        return;
-      }
-      const params = new URLSearchParams(window.location.search);
-      const clickid = params.get('clickid') || '';
-      const url = `https://orl.drsale.com.ua/click`;
-      window.location.href = url;
-    }
-  </script>
 </body>
 </html>
