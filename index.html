@@ -76,7 +76,8 @@
 
     function sendEvent(event) {
       var img = document.createElement('img');
-      img.src = `https://orl.drsale.com.ua/conversion.gif?cet=${event}&cid=${getURLParameter('cid')}`;
+      img.src = `https://orl.drsale.com.ua/conversion.gif?cet=${event}&cid=${click}`;
+      
       img.style.display = 'none';
       document.body.appendChild(img);
 
